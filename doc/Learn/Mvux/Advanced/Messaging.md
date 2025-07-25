@@ -181,7 +181,7 @@ As you can see, the messenger's `Send` method is called in the `CreateAsync` cal
 #### Additional Observe overloads
 
 The `Observe` extension method comes in several flavors.
-They all share a common goal - to send and intercept entity-message messages to and from the messenger and apply them to a state or feed-state. They also share a `keySelector` parameter which uses to determine by which property the entity is identified. This is important so that the state can compare or look up an appropriate entity where needed; for example, when an entity is updated, it will replace the old one with the new one received with the entity message.
+They all share a common goal - to send and intercept entity-message messages to and from the messenger and apply them to a state or list-state. They also share a `keySelector` parameter which uses to determine by which property the entity is identified. This is important so that the state can compare or look up an appropriate entity where needed; for example, when an entity is updated, it will replace the old one with the new one received with the entity message.
 
 - `Observe<TEntity, TKey>(IState<TEntity> state, Func<TEntity, TKey> keySelector)`
 
@@ -195,7 +195,7 @@ They all share a common goal - to send and intercept entity-message messages to 
     {
         protected IUserService UserService { get; }
 
-        public MyModel(IUserService userService)
+        public MyModel(IUserService userService, IMessenger messenger)
         {
             UserService = userService;
 
